@@ -38,7 +38,7 @@ func (r *SubscriptionRepository) GetAllSubscriptions() ([]models.Subscription, e
 	var subscriptions []models.Subscription
 	for rows.Next() {
 		var subscription models.Subscription
-		if err := rows.Scan(&subscription.Email, &subscription.SubscribedAt); err != nil {
+		if err = rows.Scan(&subscription.Email, &subscription.SubscribedAt); err != nil {
 			log.Printf("Error scanning subscription: %v", err)
 			continue
 		}

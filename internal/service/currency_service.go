@@ -29,12 +29,12 @@ var usdCode = getCurrencyCode("USD")
 var uahCode = getCurrencyCode("UAH")
 
 type CurrencyService struct {
+	// Dependencies
+	repo *repository.ExchangeRateRepository
 	// Cache variables
 	cacheRate  float64
 	cacheTime  time.Time
 	cacheMutex sync.Mutex
-	// Dependencies
-	repo *repository.ExchangeRateRepository
 }
 
 func NewCurrencyService(repo *repository.ExchangeRateRepository) *CurrencyService {
