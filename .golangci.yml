@@ -1,0 +1,13 @@
+run:
+  concurrency: 4
+  tests: false
+  allow-parallel-runners: true
+
+linters:
+  enable:
+    - govet
+    - errcheck
+    - staticcheck
+linters-settings:
+  govet:
+    enable-all: true
