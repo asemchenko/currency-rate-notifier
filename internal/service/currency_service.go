@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/bojanz/currency"
+	"io"
 	"log"
 	"net/http"
 	"strconv"
@@ -91,7 +92,12 @@ func fetchRateFromAPI() (float64, error) {
 	if err != nil {
 		return 0, err
 	}
-	defer resp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}(resp.Body)
 	if resp.StatusCode != http.StatusOK {
 		return 0, fmt.Errorf("unexpected status code: %d", resp.StatusCode)
 	}

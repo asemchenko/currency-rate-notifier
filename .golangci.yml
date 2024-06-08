@@ -8,6 +8,17 @@ linters:
     - govet
     - errcheck
     - staticcheck
+    - unused
 linters-settings:
   govet:
     enable-all: true
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+    # ignore specific errors that you may want to skip
+    # exclude:
+    #   - "defer .*"
+  unused:
+    check-struct: true
+    check-interfaces: true
+    check-embedded: true
