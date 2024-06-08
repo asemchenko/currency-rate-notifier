@@ -11,15 +11,8 @@ permissions:
   pull-requests: read
 
 jobs:
-  golangci:
-    name: lint
+  golangci-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version: stable
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v6
-        with:
-          version: v1.58
+      - name: Golangci-lint
+        uses: golangci/golangci-lint-action@v6.0.1
